@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    ports:
+      - "2181:2181" # Expose ZooKeeper port
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"  # Expose Kafka port to localhost
+      - "9093:9093"  # Expose the external listener port
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL://localhost:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    depends_on:
+      - zookeeper
+
+  # Backend service
+  backend:
+    build: ./backend  # Build the backend Dockerfile
+    container_name: backend
+    ports:
+      - "5000:5000"  # Map the backend port
+    volumes:
+      - ./backend:/app  # Mount the backend directory
+      - /app/node_modules  # Exclude node_modules
+    environment:
+      KAFKA_BROKER: kafka:9092 # Kafka broker address
+      NODE_ENV: development  # Set the environment to development
+      DB_URL: mongodb://mongo:27017/CarReservationSystem  # MongoDB connection URL
+      CHOKIDAR_USEPOLLING: "true"  # Enable polling for nodemon
+    depends_on:
+      - mongo  # Ensure the database starts first
+      - kafka
+    # command: npm run dev  # Run the backend in development mode with nodemon
+
+  # Database service (MongoDB)
+  mongo:
+    container_name: mongo
+    image: mongo:latest  # Use the official MongoDB image
+    ports:
+      - "27017:27017"  # Map the MongoDB port
+    volumes:
+      - mongo-data:/data/db
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app # Mount the frontend directory
+      - /app/node_modules # Exclude node_modules
+
+volumes:
+  mongo-data:
