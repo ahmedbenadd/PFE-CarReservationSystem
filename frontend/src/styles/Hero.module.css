@@ -1,0 +1,134 @@
+.heroSection {
+    background-color: #f8f8f8;
+    height: 97vh;
+    position: relative;
+    width: 100%;
+}
+
+.container {
+    margin: 0 auto !important;
+    max-width: 133rem !important;
+    padding: 0 2rem !important;
+}
+
+.bgShape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.heroContent {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    position: relative;
+    width: 100%;
+    background-color: transparent;
+}
+
+.heroContentText {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5.8rem;
+    max-width: 35rem;
+    z-index: 3;
+    background-color: transparent;
+}
+
+.heroContentText h4 {
+    color: #010103;
+    font-family: Rubik, sans-serif;
+    font-size: 1.5rem;
+    background-color: transparent;
+}
+
+.heroContentText h1 {
+    color: #010103;
+    font-family: Poppins, sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-color: transparent;
+}
+
+.heroContentText h1 span {
+    background-color: transparent;
+    color: #0065a1;
+}
+
+.heroContentText p {
+    color: #706f7b;
+    font-family: Rubik, sans-serif;
+    font-size: 1rem;
+    line-height: 1.3;
+    margin-bottom: 2.5rem;
+    background-color: transparent;
+}
+
+.heroContentTextBtns {
+    display: flex;
+    font-family: Rubik, sans-serif;
+    font-size: 1.1rem;
+    gap: 1.8rem;
+    background-color: transparent;
+}
+
+.heroContentTextBtns a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.heroContentTextBtnsBookRide {
+    background-color: #0065a1;
+    border: 2px solid #0065a1;
+    border-radius: .2rem;
+    box-shadow: 0 10px 15px 0 rgba(0, 101, 161, 0.49);
+    padding: 1.2rem 1.8rem;
+    transition: all .3s;
+}
+
+.heroContentTextBtnsLearnMore {
+    background-color: #010103;
+    border: 2px solid #010103;
+    border-radius: .2rem;
+    padding: 1.2rem 1.8rem;
+    transition: all .3s;
+}
+
+.heroContentCarImg {
+    margin-top: 5rem;
+    position: absolute;
+    right: 0;
+    width: 55%;
+    z-index: 2;
+    background-color: transparent;
+}
+
+.scrollToTop {
+    align-items: center;
+    background-color: #0065a1;
+    border: 3px solid #fff;
+    border-radius: .8rem;
+    bottom: 3.5rem;
+    cursor: pointer;
+    display: none;
+    height: 1rem;
+    justify-content: center;
+    padding: 1.5rem;
+    position: fixed;
+    right: 3.5rem;
+    width: 1rem;
+    z-index: 20;
+}
+
+.scrollToTop img {
+    background-color: transparent;
+}
+
+.showScrollToTop {
+    display: flex;
+}

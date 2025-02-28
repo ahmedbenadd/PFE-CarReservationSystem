@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import styles from '../styles/CarReservationForm.module.css';
 
 const CarReservationForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
+        carModel: '',
         pickupDate: '',
         dropoffDate: '',
-        pickupLocation: '',
-        dropoffLocation: '',
         message: '',
     });
 
@@ -35,8 +36,7 @@ const CarReservationForm = () => {
         if (new Date(formData.dropoffDate) <= new Date(formData.pickupDate)) {
             errors.dropoffDate = 'Drop-off date must be after Pick-up date';
         }
-        if (!formData.pickupLocation) errors.pickupLocation = 'Pick-up location is required';
-        if (!formData.dropoffLocation) errors.dropoffLocation = 'Drop-off location is required';
+        if (!formData.carModel) errors.carModel = 'Car model is required';
         return errors;
     };
 
@@ -46,14 +46,14 @@ const CarReservationForm = () => {
         if (Object.keys(validationErrors).length === 0) {
             setErrors({});
             try {
-                const response = await fetch('http://localhost:5000/api/reservations', {
-                    method: 'POST',
+                // Use axios to send the POST request
+                const response = await axios.post('http://localhost:5000/api/reservations', formData, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(formData),
                 });
-                if (response.ok) {
+
+                if (response.status === 200 || response.status === 201) {
                     setSuccessMessage('Reservation submitted successfully!');
                     setFormData({
                         name: '',
@@ -61,8 +61,7 @@ const CarReservationForm = () => {
                         phone: '',
                         pickupDate: '',
                         dropoffDate: '',
-                        pickupLocation: '',
-                        dropoffLocation: '',
+                        carModel: '',
                         message: '',
                     });
                 } else {
@@ -139,26 +138,15 @@ const CarReservationForm = () => {
                     {errors.dropoffDate && <span className="error-message">{errors.dropoffDate}</span>}
                 </div>
                 <div className="form-group">
-                    <label>Pick-up Location:</label>
+                    <label>Car model:</label>
                     <input
                         type="text"
-                        name="pickupLocation"
-                        value={formData.pickupLocation}
+                        name="carModel"
+                        value={formData.carModel}
                         onChange={handleChange}
-                        className={errors.pickupLocation ? 'error' : ''}
+                        className={errors.carModel ? 'error' : ''}
                     />
-                    {errors.pickupLocation && <span className="error-message">{errors.pickupLocation}</span>}
-                </div>
-                <div className="form-group">
-                    <label>Drop-off Location:</label>
-                    <input
-                        type="text"
-                        name="dropoffLocation"
-                        value={formData.dropoffLocation}
-                        onChange={handleChange}
-                        className={errors.dropoffLocation ? 'error' : ''}
-                    />
-                    {errors.dropoffLocation && <span className="error-message">{errors.dropoffLocation}</span>}
+                    {errors.carModel && <span className="error-message">{errors.carModel}</span>}
                 </div>
                 <div className="form-group">
                     <label>Message:</label>

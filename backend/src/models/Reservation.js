@@ -4,11 +4,12 @@ const reservationSchema = new mongoose.Schema({
     name: String,
     email: String,
     phone: String,
+    carModel: String,
     pickupDate: Date,
     dropoffDate: Date,
-    pickupLocation: String,
-    dropoffLocation: String,
-    message: String,
+    message: String
+}, {
+    timestamps: true
 });
 
 const Reservation = mongoose.model('Reservation', reservationSchema);

@@ -2,11 +2,13 @@ const kafka = require('../config/kafkaConfig');
 const Reservation = require('../models/Reservation');
 const env = require('../config/env');
 
-const consumer = kafka.consumer({ groupId: 'reservation-consumer-group' });
+const consumer = kafka.consumer({ groupId: env.RESERVATION_CONSUMER_GROUP });
 
 const consumeReservationEvents = async () => {
     await consumer.connect();
     await consumer.subscribe({ topic: env.RESERVATION_TOPIC, fromBeginning: true });
+
+    console.log("Kafka consumer is listening for: " + env.RESERVATION_TOPIC);
 
     await consumer.run({
         eachMessage: async ({ topic, partition, message }) => {

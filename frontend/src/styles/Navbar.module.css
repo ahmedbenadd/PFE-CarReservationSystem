@@ -1,0 +1,136 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 1.4rem 2rem;
+    color: black;
+    width: 100%;
+    height: auto;
+    left: 0;
+    margin: auto 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99999;
+}
+
+.navbarImg {
+    background-color: transparent;
+}
+
+.navbarImg a {
+    background-color: transparent;
+}
+
+.navbarImg img {
+    height: 65px;
+    background-color: transparent;
+}
+
+.navbarLinks {
+    list-style: none;
+    display: flex;
+    gap: 1.3em;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+.navbarLinks li {
+    margin: 0;
+    background-color: transparent;
+}
+
+.navbarLinks a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: Rubik, sans-serif;
+    background-color: transparent;
+}
+
+.navbarLinks a:hover {
+    color: #0065a1;
+}
+
+.navbarButtons {
+    align-items: center;
+    display: flex;
+    gap: 1.8rem;
+    background-color: transparent;
+}
+
+.navbarButtons a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*#0065a1*/
+
+.navbarButtons a:last-child {
+    color: white;
+    background-color: #0065a1;
+    border-radius: 3px;
+    box-shadow: 0 10px 15px 0 rgba(90, 194, 255, 0.47);
+    padding: 1rem 1.8rem;
+    transition: box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.navbarButtons a:hover {
+    color: #0065a1;
+}
+
+.navbarButtons a:last-child:hover {
+    color: white;
+    box-shadow: 0 10px 15px 0 rgba(90, 194, 255, 0.8);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .navbarLinks {
+        gap: 0.5rem;
+    }
+
+    .navbarButtons {
+        gap: 0.5rem;
+    }
+
+    .navbarButtons a {
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/*@media (max-width: 768px) {*/
+/*    .navbarLinks {*/
+/*        display: none;*/
+/*    }*/
+
+/*    .navbarButtons {*/
+/*        display: none;*/
+/*    }*/
+
+/*    .mobileHamb {*/
+/*        display: block;*/
+/*        cursor: pointer;*/
+/*    }*/
+/*}*/
+
+@media (max-width: 576px) {
+    .navbar {
+        padding: 0.8rem 1.5rem;
+    }
+
+    .navbarImg img {
+        height: 35px;
+    }
+
+    .navbarButtons a {
+        padding: 0.3rem 0.6rem;
+    }
+}
