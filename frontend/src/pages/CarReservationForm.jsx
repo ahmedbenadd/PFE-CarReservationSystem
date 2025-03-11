@@ -79,7 +79,7 @@ const CarReservationForm = () => {
 
     return (
         <div className="car-reservation-form">
-            <h2>Car Reservation Form</h2>
+            <h2>Car Reservation</h2>
             {successMessage && <div className="success-message">{successMessage}</div>}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
