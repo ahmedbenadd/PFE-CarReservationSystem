@@ -1,0 +1,264 @@
+[{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e557010"
+  },
+  "brand": "Toyota",
+  "model": "Corolla",
+  "hp": 139,
+  "engineSize": 1800,
+  "gear": "Automatic",
+  "body": "Sedan",
+  "imgUrl": "http://localhost:5000/carImage/toyota-corolla.png",
+  "fuel": "Hybrid",
+  "availability": true,
+  "price": 400,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.765Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.765Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e557011"
+  },
+  "brand": "Ford",
+  "model": "Mustang",
+  "hp": 450,
+  "engineSize": 5000,
+  "gear": "Manual",
+  "body": "Coupe",
+  "imgUrl": "http://localhost:5000/carImage/ford-mustang.png",
+  "fuel": "Gasoline",
+  "availability": true,
+  "price": 1200,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.765Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.765Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e557012"
+  },
+  "brand": "BMW",
+  "model": "X5",
+  "hp": 335,
+  "engineSize": 3000,
+  "gear": "Automatic",
+  "body": "SUV",
+  "imgUrl": "http://localhost:5000/carImage/bmw-x5.png",
+  "fuel": "Diesel",
+  "availability": true,
+  "price": 1000,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e557013"
+  },
+  "brand": "BMW",
+  "model": "i5",
+  "hp": 340,
+  "engineSize": 0,
+  "gear": "Automatic",
+  "body": "Sedan",
+  "imgUrl": "http://localhost:5000/carImage/bmw-i5.png",
+  "fuel": "Electric",
+  "availability": true,
+  "price": 1100,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e557014"
+  },
+  "brand": "Mercedes-Benz",
+  "model": "C-Class",
+  "hp": 255,
+  "engineSize": 2000,
+  "gear": "Automatic",
+  "body": "Sedan",
+  "imgUrl": "http://localhost:5000/carImage/mercedes-c-class.png",
+  "fuel": "Gasoline",
+  "availability": true,
+  "price": 900,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e557015"
+  },
+  "brand": "Volkswagen",
+  "model": "Golf",
+  "hp": 147,
+  "engineSize": 1500,
+  "gear": "Automatic",
+  "body": "Hatchback",
+  "imgUrl": "http://localhost:5000/carImage/vw-golf.png",
+  "fuel": "Gasoline",
+  "availability": true,
+  "price": 500,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e557016"
+  },
+  "brand": "Audi",
+  "model": "A4",
+  "hp": 201,
+  "engineSize": 2000,
+  "gear": "Automatic",
+  "body": "Sedan",
+  "imgUrl": "http://localhost:5000/carImage/audi-a4.png",
+  "fuel": "Diesel",
+  "availability": true,
+  "price": 800,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e557017"
+  },
+  "brand": "Nissan",
+  "model": "Qashqai",
+  "hp": 140,
+  "engineSize": 1300,
+  "gear": "Automatic",
+  "body": "SUV",
+  "imgUrl": "http://localhost:5000/carImage/nissan-qashqai.png",
+  "fuel": "Gasoline",
+  "availability": true,
+  "price": 600,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e557018"
+  },
+  "brand": "Peugeot",
+  "model": "208",
+  "hp": 100,
+  "engineSize": 1200,
+  "gear": "Manual",
+  "body": "Hatchback",
+  "imgUrl": "http://localhost:5000/carImage/peugeot-208.png",
+  "fuel": "Gasoline",
+  "availability": false,
+  "price": 350,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e557019"
+  },
+  "brand": "Renault",
+  "model": "Clio",
+  "hp": 90,
+  "engineSize": 1000,
+  "gear": "Manual",
+  "body": "Hatchback",
+  "imgUrl": "http://localhost:5000/carImage/renault-clio.png",
+  "fuel": "Gasoline",
+  "availability": true,
+  "price": 300,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e55701a"
+  },
+  "brand": "Hyundai",
+  "model": "Tucson",
+  "hp": 180,
+  "engineSize": 2000,
+  "gear": "Automatic",
+  "body": "SUV",
+  "imgUrl": "http://localhost:5000/carImage/hyundai-tucson.png",
+  "fuel": "Gasoline",
+  "availability": true,
+  "price": 650,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cf84f2bba2cbb82e55701b"
+  },
+  "brand": "Kia",
+  "model": "Sportage",
+  "hp": 177,
+  "engineSize": 2000,
+  "gear": "Automatic",
+  "body": "SUV",
+  "imgUrl": "http://localhost:5000/carImage/kia-sportage.png",
+  "fuel": "Diesel",
+  "availability": true,
+  "price": 600,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-11T00:33:54.766Z"
+  }
+}]
