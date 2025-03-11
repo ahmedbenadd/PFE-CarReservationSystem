@@ -8,7 +8,7 @@
 .container {
     margin: 0 auto !important;
     max-width: 133rem !important;
-    padding: 0 2rem !important;
+    padding: 0 2.5rem !important;
 }
 
 .bgShape {
@@ -30,23 +30,25 @@
 .heroContentText {
     display: flex;
     flex-direction: column;
-    margin-top: 5.8rem;
-    max-width: 35rem;
+    margin-top: 3rem;
+    max-width: 30rem;
     z-index: 3;
     background-color: transparent;
+    font-family: Poppins, sans-serif;
 }
 
 .heroContentText h4 {
     color: #010103;
     font-family: Rubik, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
     background-color: transparent;
 }
 
 .heroContentText h1 {
     color: #010103;
     font-family: Poppins, sans-serif;
-    font-size: 3rem;
+    font-size: 3.1rem;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1.5rem;
@@ -63,6 +65,7 @@
     color: #706f7b;
     font-family: Rubik, sans-serif;
     font-size: 1rem;
+    font-weight: 500;
     line-height: 1.3;
     margin-bottom: 2.5rem;
     background-color: transparent;
@@ -71,7 +74,7 @@
 .heroContentTextBtns {
     display: flex;
     font-family: Rubik, sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     gap: 1.8rem;
     background-color: transparent;
 }
@@ -87,23 +90,32 @@
     border: 2px solid #0065a1;
     border-radius: .2rem;
     box-shadow: 0 10px 15px 0 rgba(0, 101, 161, 0.49);
-    padding: 1.2rem 1.8rem;
-    transition: all .3s;
+    padding: 1.2rem 1.5rem;
+    transition: all .4s ease;
+}
+
+.heroContentTextBtnsBookRide:hover {
+    box-shadow: 1px 13px 18px 2px rgba(0, 101, 161, 0.6);
 }
 
 .heroContentTextBtnsLearnMore {
     background-color: #010103;
     border: 2px solid #010103;
     border-radius: .2rem;
-    padding: 1.2rem 1.8rem;
-    transition: all .3s;
+    padding: 1.2rem 1.5rem;
+    transition: all .5s ease;
+}
+
+.heroContentTextBtnsLearnMore:hover {
+    background-color: white;
+    color: black;
 }
 
 .heroContentCarImg {
     margin-top: 5rem;
     position: absolute;
     right: 0;
-    width: 55%;
+    width: 50%;
     z-index: 2;
     background-color: transparent;
 }

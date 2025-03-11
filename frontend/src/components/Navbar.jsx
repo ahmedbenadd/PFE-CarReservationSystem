@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
-import Logo from "../images/logo/test3.png";
+import { Link, useLocation } from "react-router-dom"; // Import useLocation
+import Logo from "../images/logo/logo_blue_nobg.png";
 import styles from "../styles/Navbar.module.css";
 
 function Navbar() {
+    const location = useLocation(); // Get the current location
 
     return (
         <>
@@ -15,27 +16,52 @@ function Navbar() {
                     </div>
                     <ul className={styles.navbarLinks}>
                         <li>
-                            <Link className={styles.homeLink} to="/">
+                            <Link
+                                className={`${styles.homeLink} ${
+                                    location.pathname === "/" ? styles.activePage : ""
+                                }`}
+                                to="/"
+                            >
                                 Home
                             </Link>
                         </li>
                         <li>
-                            <Link className={styles.aboutLink} to="/about">
-                                About
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className={styles.modelsLink} to="/models">
+                            <Link
+                                className={` ${
+                                    location.pathname === "/models" ? styles.activePage : ""
+                                }`}
+                                to="/models"
+                            >
                                 Cars
                             </Link>
                         </li>
                         <li>
-                            <Link className={styles.testiLink} to="/testimonials">
+                            <Link
+                                className={`${
+                                    location.pathname === "/about" ? styles.activePage : ""
+                                }`}
+                                to="/about"
+                            >
+                                About
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className={`${
+                                    location.pathname === "/testimonials" ? styles.activePage : ""
+                                }`}
+                                to="/testimonials"
+                            >
                                 Testimonials
                             </Link>
                         </li>
                         <li>
-                            <Link className={styles.contactLink} to="/contact">
+                            <Link
+                                className={`${
+                                    location.pathname === "/contact" ? styles.activePage : ""
+                                }`}
+                                to="/contact"
+                            >
                                 Contact
                             </Link>
                         </li>

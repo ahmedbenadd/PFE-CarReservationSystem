@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
-    padding: 1.4rem 2rem;
+    padding: 1.3rem 2rem;
     color: black;
     width: 100%;
     height: auto;
@@ -54,6 +54,10 @@
 
 .navbarLinks a:hover {
     color: #0065a1;
+}
+
+.activePage {
+    color: #0065a1 !important;
 }
 
 .navbarButtons {

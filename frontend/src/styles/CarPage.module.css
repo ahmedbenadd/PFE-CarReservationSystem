@@ -1,0 +1,200 @@
+.container {
+    margin: 9rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+    flex-direction: column;
+}
+
+.row {
+    width: 90%;
+    margin: 0 auto 2rem auto;
+}
+
+.carName h2 {
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    font-size: 2rem;
+}
+
+.carDetails {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.carDetailsUl {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.col {
+    flex: 1;
+    min-width: 300px;
+}
+
+.imgContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carImage {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.detailsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.detailsList li {
+    font-family: Rubik, sans-serif;
+    font-size: 1.2rem;
+    padding: 10px 16px;
+    background-color: transparent;
+    border-bottom: 1px solid rgb(205, 205, 205);
+    transition: all .3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.detailsList li:hover {
+    background-color: rgba(221, 221, 221, 0.4);
+}
+
+.detailsList li strong {
+    color: #333;
+}
+
+.detailsList li img {
+    width: 25px;
+    height: auto;
+}
+
+.priceContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.priceContainer span {
+    font-family: Rubik, sans-serif;
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin: 1rem 0 1rem .8rem;
+    color: #198754;
+}
+
+.priceContainer span span {
+    color: black;
+    font-weight: 500;
+}
+
+.availability {
+    width: fit-content;
+    margin: 1rem .8rem 1rem 0;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.available {
+    color: #198754;
+}
+
+.notAvailable {
+    color: red;
+}
+
+.dateRow {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dateRow .col {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+}
+
+.inputGroup {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.inputGroup span {
+    font-family: Rubik, sans-serif;
+    font-size: 1.3rem;
+    padding: .8rem 1.3rem;
+    border: #c6c6c6 solid 1px;
+    border-right: none;
+    text-align: center;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    border-radius: 5px 0 0 5px;
+
+}
+
+.inputGroup input {
+    font-family: Rubik, sans-serif;
+    font-size: 1.3rem;
+    padding: .8rem 1.3rem;
+    border: #c6c6c6 solid 1px;
+    border-radius: 0 5px 5px 0;
+    flex: 1;
+
+}
+
+.inputGroup input:disabled {
+    cursor: not-allowed;
+}
+
+.reserveButton {
+    width: 100%;
+    padding: .8rem 1.3rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background-color: #198754;
+    border-radius: 5px;
+    transition: all .3s ease;
+    border: none;
+    color: white;
+}
+
+.reserveButton:hover {
+    background-color: #106e42;
+    cursor: pointer;
+}
+
+.reserveButton:disabled {
+    cursor: not-allowed;
+    background-color: #06532f;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.snackbar {
+    margin-top: 6.5rem;
+}
+
+.error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: red;
+    margin-top: 20px;
+}

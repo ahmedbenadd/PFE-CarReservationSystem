@@ -36,7 +36,7 @@ const CarReservationForm = () => {
         if (new Date(formData.dropoffDate) <= new Date(formData.pickupDate)) {
             errors.dropoffDate = 'Drop-off date must be after Pick-up date';
         }
-        if (!formData.carModel) errors.carModel = 'Car model is required';
+        if (!formData.carModel) errors.carModel = 'CarPage model is required';
         return errors;
     };
 
@@ -156,7 +156,7 @@ const CarReservationForm = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit">Submit</button>
+                <button className={styles.button} type="submit">Submit</button>
             </form>
         </div>
     );
