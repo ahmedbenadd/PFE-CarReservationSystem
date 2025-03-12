@@ -1,23 +1,30 @@
 import React from 'react';
-import './App.css';
-import CarReservationForm from './pages/CarReservationForm.jsx';
-import Home from './pages/Home.jsx';
-import Navbar from './components/Navbar.jsx';
-import Footer from './components/Footer.jsx';
 import {Route, Routes, Navigate} from 'react-router-dom';
-import CarPage from "./pages/CarPage.jsx"; // Import Navigate
+import './App.css';
+
+import Navbar from './components/Navbar.jsx';
+import Home from './pages/Home.jsx';
+import CarPage from "./pages/CarPage.jsx";
+import Cars from "./pages/Cars.jsx";
+import Contact from './pages/Contact.jsx';
+import Testimonials from "./pages/Testimonials.jsx";
+import About from "./pages/About.jsx";
+import Footer from './components/Footer.jsx';
 
 function App() {
     return (
         <>
             <Navbar/>
             <Routes>
-                <Route path="/home" element={<Navigate to="/" replace/>}/>
                 <Route path="/" element={<Home/>}/>
+                <Route path="/home" element={<Navigate to="/" replace/>}/>
+                <Route path="/cars" element={<Cars />}/>
+                <Route path="/testimonials" element={<Testimonials />}/>
+                <Route path="/contact" element={<Contact />}/>
+                <Route path="/about" element={<About />}/>
                 <Route path="/car/:id" element={<CarPage />}/>
-                <Route path="/reservation" element={<CarReservationForm />}/>
             </Routes>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }

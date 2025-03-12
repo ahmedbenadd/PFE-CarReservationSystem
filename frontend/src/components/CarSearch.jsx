@@ -34,6 +34,7 @@ function CarSearch() {
             setSelectError('Please select a car brand and model.');
             return;
         }
+        window.scrollTo(0, 0);
         navigate(`/car/${selectedCarId}`);
     };
 

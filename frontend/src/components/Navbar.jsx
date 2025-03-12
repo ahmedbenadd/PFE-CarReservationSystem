@@ -11,7 +11,7 @@ function Navbar() {
                 <div className={styles.navbar}>
                     <div className={styles.navbarImg}>
                         <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-                            <img src={Logo} alt="AUTOGO" />
+                            <img src={Logo} alt="Auto GO" />
                         </Link>
                     </div>
                     <ul className={styles.navbarLinks}>
@@ -28,23 +28,14 @@ function Navbar() {
                         <li>
                             <Link
                                 className={` ${
-                                    location.pathname === "/models" ? styles.activePage : ""
+                                    location.pathname === "/cars" ? styles.activePage : ""
                                 }`}
-                                to="/models"
+                                to="/cars"
                             >
                                 Cars
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                className={`${
-                                    location.pathname === "/about" ? styles.activePage : ""
-                                }`}
-                                to="/about"
-                            >
-                                About
-                            </Link>
-                        </li>
+
                         <li>
                             <Link
                                 className={`${
@@ -63,6 +54,16 @@ function Navbar() {
                                 to="/contact"
                             >
                                 Contact
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className={`${
+                                    location.pathname === "/about" ? styles.activePage : ""
+                                }`}
+                                to="/about"
+                            >
+                                About
                             </Link>
                         </li>
                     </ul>
