@@ -68,11 +68,11 @@ function Navbar() {
                         </li>
                     </ul>
                     <div className={styles.navbarButtons}>
-                        <Link className={styles.signInButton} to="/">
-                            Sign In
+                        <Link to="/login" className={styles.signInButton}>
+                            Login
                         </Link>
-                        <Link className={styles.registerButton} to="/">
-                            Register
+                        <Link to="/signup" className={styles.registerButton}>
+                            Signup
                         </Link>
                     </div>
                 </div>

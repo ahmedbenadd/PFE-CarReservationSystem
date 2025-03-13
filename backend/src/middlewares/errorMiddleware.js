@@ -1,6 +1,7 @@
 const codes = require("../config/codes");
 
 const errorHandler = (err, req, res, next) => {
+    console.log(err);
     const statusCode = res.statusCode ? res.statusCode : 500;
     switch (statusCode) {
         case codes.VALIDATION_ERROR:

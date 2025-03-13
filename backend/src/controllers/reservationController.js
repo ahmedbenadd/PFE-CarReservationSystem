@@ -7,6 +7,7 @@ exports.createReservation = async (req, res) => {
         await produceReservationEvent(reservationData);
         res.status(201).send('Reservation event produced');
     } catch (error) {
-        res.status(500).send('Error producing reservation event');
+        res.status(500);
+        throw new Error('Error producing reservation event');
     }
 };

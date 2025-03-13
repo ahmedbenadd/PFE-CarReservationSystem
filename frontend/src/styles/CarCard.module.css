@@ -1,0 +1,80 @@
+.card {
+    border: 1px solid #ccc;
+    padding: 1.4rem 0.6rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1.1rem 1rem;
+    border-radius: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 25rem;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.imgContainer {
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    border-radius: 8px;
+    align-content: center;
+    justify-content: center;
+}
+
+.carImage {
+    width: 95%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.carName {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.carDetails {
+    font-size: 1rem;
+    color: #555;
+    margin: .5rem 0;
+    line-height: 1.5; /* Improve readability */
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.rentButton {
+    background-color: #198754;
+    color: white;
+    border: none;
+    width: 80%;
+    padding: .8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease; /* Smooth button hover */
+}
+
+.rentButton:hover {
+    background-color: #06532f;
+}
+
+.buttonDisabled {
+    background-color: #ccc;
+}
+
+.buttonDisabled:hover {
+    background-color: #ccc;
+}

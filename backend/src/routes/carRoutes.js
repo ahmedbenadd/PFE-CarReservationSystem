@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const idValidator = require("../middlewares/idValidationMiddleware");
 const {
     getCars,
     getCarById,
@@ -10,6 +11,7 @@ const {
 
 router.route("/brands").get(getBrandsWithModels);
 router.route("/").get(getCars).post(createCar);
-router.route("/:id").get(getCarById).put(updateCar).delete(deleteCar);
+router.route("/:id").get(idValidator, getCarById).put(idValidator, updateCar).delete(idValidator, deleteCar);
 
 module.exports = router;
+

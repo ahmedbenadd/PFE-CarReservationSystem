@@ -19,19 +19,19 @@ function Footer() {
                                 meet your needs.
                             </li>
                             <li>
-                                <a href="https://g.co/kgs/geD4rsq">
+                                <a target="_blank" href="https://g.co/kgs/geD4rsq">
                                     <img className={styles.icons}  src={locationIcon} alt="location" />&nbsp;
                                     Casablanca
                                 </a>
                             </li>
                             <li>
-                                <a href="tel:1234567890">
+                                <a target="_blank" href="tel:1234567890">
                                     <img className={styles.icons}  src={telIcon} alt="tel" />&nbsp;
                                     +212 599999999
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:main.autogo@gmail.com">
+                                <a target="_blank" href="mailto:main.autogo@gmail.com">
                                     <img className={styles.icons} src={emailIcon} alt="email" />&nbsp;
                                     main.autogo@gmail.com
                                 </a>

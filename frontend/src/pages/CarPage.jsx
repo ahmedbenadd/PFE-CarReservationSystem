@@ -30,6 +30,7 @@ function CarPage() {
         const fetchCar = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/api/car/${id}`);
+                console.log(response);
                 setCar(response.data);
                 setLoading(false);
             } catch (err) {
@@ -182,7 +183,7 @@ function CarPage() {
                 </div>
                 <div className={`${styles.row} ${styles.dateRow}`}>
                     <div className={styles.col}>
-                       <button disabled={!pickupDate || !dropoffDate || !car.availability} className={styles.reserveButton} onClick={handleReserve}>Reserve Now!</button>
+                       <button disabled={!pickupDate || !dropoffDate || !car.availability} className={styles.reserveButton} onClick={handleReserve}>{car.availability ? "Reserve Now!" : "Car Unavailable!"}</button>
                     </div>
                 </div>
             </div>

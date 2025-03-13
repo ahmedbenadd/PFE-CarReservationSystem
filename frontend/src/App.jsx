@@ -10,6 +10,8 @@ import Contact from './pages/Contact.jsx';
 import Testimonials from "./pages/Testimonials.jsx";
 import About from "./pages/About.jsx";
 import Footer from './components/Footer.jsx';
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 
 function App() {
     return (
@@ -23,6 +25,8 @@ function App() {
                 <Route path="/contact" element={<Contact />}/>
                 <Route path="/about" element={<About />}/>
                 <Route path="/car/:id" element={<CarPage />}/>
+                <Route path="/login" element={<Login />}/>
+                <Route path="/signup" element={<Signup />}/>
             </Routes>
             <Footer />
         </>
