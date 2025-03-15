@@ -1,0 +1,15 @@
+h1 {
+    text-align: left;
+    margin-right: 100px;
+    margin-bottom: 30px;
+}
+.about-section {
+    background: #007bff;
+}
+.about {
+    color: yellow;
+    background: #007bff;
+}
+h2 {
+    margin-left: 400px;
+}
