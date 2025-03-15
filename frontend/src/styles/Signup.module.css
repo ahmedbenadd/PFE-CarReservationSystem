@@ -1,24 +1,26 @@
 .signup-container {
     width: 400px;
-    margin: 50px auto;
+    margin: 10px;
     padding: 20px;
     background-color: #b6d3f9;
     border-radius: 10px;
 }
 h1{
-    margin-left: 141px;
+    margin-top: 120px;
+    margin-left: 590px;
 
 }
 input {
-    width: 100%;
-    padding: 10px;
-    margin: 12px 0;
+    width: 40%;
+    padding: 15px;
+    margin-left: 400px;
+    margin-top: 30px;
 }
-form .policy input[type="checkbox"] {
-    width: auto;
-    padding: 0;
-    margin: 0;
-    margin-right: 10px;
+input[type="checkbox"] {
+    padding: 100px;
+    margin-left: 155px;
+    margin-top: 10px;
+
 }
 .policy {
     display: flex;
@@ -26,25 +28,30 @@ form .policy input[type="checkbox"] {
 }
 h3 {
     color: #544f4f;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 500;
-    margin-right: 100px;
-    margin: 0;
+    margin-left: 420px;
+    margin-top: -19px;
+
 }
 h4 {
-    color: #2d2828;
+    color: #000000;
     font-size: 15px;
     font-weight: 10;
-    margin: 0;
+    margin-left: 540px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
 button {
-    width: 100%;
-    padding: 10px;
+    width: 40%;
+    padding: 20px;
     background-color: #3266de;
     color: rgb(10, 10, 15);
     border: none;
     cursor: pointer;
-    margin-top: 10px;
+    margin-left: 400px;
+    margin-top: 30px;
 }
 
 button:hover {
