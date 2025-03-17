@@ -1,0 +1,29 @@
+.h1 {
+    margin-left: 510px;
+    margin-bottom: 30px;
+}
+.ab {
+    border: 2px solid #5117f8; /* Bordure autour du conteneur */
+    background-color: #f4ebeb; /* Couleur de fond */
+    padding: 20px; /* Espace intérieur */
+    margin-bottom: 20px; /* Espace entre les conteneurs */
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.h2 {
+    font-size:26px; font-weight:700;  letter-spacing:1px; text-transform:uppercase; width:160px; white-space:nowrap; padding-bottom:13px;
+    color: #042b4c; /* Couleur du titre */
+    margin-bottom: 10px;
+}
+.btn {
+    width: 180px;
+    height: 60px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #91C9FF;
+    outline: none;
+    transition: 400ms ease-in-out;
+    margin-left: 450px;
+}
