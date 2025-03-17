@@ -1,17 +1,54 @@
-import styles from '../styles/Login.module.css'
-import {Link, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import styles from '../styles/Login.module.css';
+import { Link } from "react-router-dom";
 
 function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent page reload
+
+        if (!email || !password) {
+            setError("* Please fill in all fields.");
+            return;
+        }
+
+        const requestBody = {
+            email,
+            password,
+        };
+
+        console.log(requestBody);
+    };
+
     return (
-        <div className="login-container">
-        <h1>Login</h1>
-            <form>
-                <input type="email" placeholder="Enter your email" />
-                <input type="password" placeholder="Enter your password" />
-                <button type="submit">Login</button>
-                <div className="text">
-                    <h4>
-                        Don't have an account? <Link to ="/Signup">Signup</Link>
+        <div className={styles.loginContainer}>
+            <h1 className={styles.title}>Login</h1>
+            {error && <p className={styles.error}>{error}</p>} {/* Display error message */}
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className={styles.input}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Enter your password"
+                    className={styles.input}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button className={styles.button} type="submit">
+                    Login
+                </button>
+                <div className={styles.signupPrompt}>
+                    <h4 className={styles.h4}>
+                        Don't have an account? <Link to="/Signup" className={styles.link}>Signup</Link>
                     </h4>
                 </div>
             </form>

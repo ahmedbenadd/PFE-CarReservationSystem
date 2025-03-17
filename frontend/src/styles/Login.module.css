@@ -1,26 +1,78 @@
-.login-container {
-    width: 400px;
-    margin: 10px;
-    padding: 20px;
-    background-color: #b6d3f9;
+.loginContainer {
+    width: 100%;
+    max-width: 500px;
+    margin: 10rem auto 6rem auto;
+    padding: 30px;
+    background-color: #ffffff;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-button {
-    width: 40%;
-    padding: 15px;
+.title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #3266de;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus {
+    border-color: #3266de;
+}
+
+.button {
+    width: 100%;
+    padding: 12px;
     background-color: #3266de;
-    color: rgb(10, 10, 15);
+    color: white;
     border: none;
+    border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    margin-left: 400px;
-    margin-top: 200px;
-    margin-right: 100px;
-}
-h4 {
-    margin-left: 20px;
-
+    transition: background-color 0.3s ease;
 }
 
+.button:hover {
+    background-color: #1a4fad;
+}
 
+.signupPrompt {
+    margin-top: 15px;
+}
 
+.h4 {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.link {
+    color: #3266de;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: #ff0000;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    text-align: center;
+}

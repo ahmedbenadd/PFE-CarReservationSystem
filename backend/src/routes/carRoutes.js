@@ -6,7 +6,8 @@ const {
     getCarById,
     createCar,
     updateCar,
-    deleteCar, getBrandsWithModels,
+    deleteCar,
+    getBrandsWithModels,
 } = require("../controllers/carController");
 
 router.route("/brands").get(getBrandsWithModels);
