@@ -16,6 +16,7 @@ function Cars() {
                 setLoading(false)
             } catch (err) {
                 console.log(err);
+                setLoading(false);
             }
         };
         fetchCars();
@@ -23,9 +24,14 @@ function Cars() {
 
     if (loading) {
         return (
+            <section className={styles.carsSection}>
+                <h2>Discover our cars collection</h2>
+
             <div className={styles.loading}>
                 <CircularProgress />
             </div>
+            </section>
+
         );
     }
 

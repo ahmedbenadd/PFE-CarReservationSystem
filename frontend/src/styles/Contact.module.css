@@ -1,79 +1,124 @@
-.h1 {
-    margin-left: 550px;
+.container {
+    max-width: 1200px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin: 10rem auto 6rem auto;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
     margin-bottom: 30px;
 }
-.form {
-    border: 2px solid #5117f8; /* Bordure autour du conteneur */
-    background-color: #f4ebeb; /* Couleur de fond */
-    padding: 20px; /* Espace intérieur */
-    margin-bottom: 20px; /* Espace entre les conteneurs */
-    margin-left: 60px;
-    margin-right: 60px;
-    border-radius: 8px; /* Coins arrondis */
+
+.formContainer {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.h2 {
-    border: 1px solid #333; /* Bordure solide */
-    padding: 10px 20px; /* Espacement intérieur */
-    display: inline-block; /* Pour que la bordure s'adapte au texte */
-    font-family: Arial, sans-serif;
-    font-size: 25px;
-    color: #333;
+
+.formTitle {
     text-align: center;
-    background-color: #ccc8fd; /* Fond légèrement coloré */
-    border-radius: 8px; /* Coins arrondis */
-    margin-left: 180px;
+    font-size: 2rem;
+    color: #333;
     margin-bottom: 20px;
 }
-.txt1 {
-    margin-left: 100px;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-.txt2 {
-    margin-left: 100px;
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
-.txt3 {
-    margin-left: 100px;
+
+.label {
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
 }
-.cadre {
-    padding-top: 10px;
-    padding-left: 10px;
-    width: 40%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 100px;
-}
-.btn {
-    width: 180px;
-    height: 60px;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid #91C9FF;
+
+.input, .textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
     outline: none;
-    transition: 400ms ease-in-out;
-    margin-left: 450px;
+    transition: border-color 0.3s ease;
 }
-.contact {
-    border: 2px solid #5117f8; /* Bordure autour du conteneur */
-    background-color: #f4ebeb; /* Couleur de fond */
-    /* Espace intérieur */
-    margin-bottom: 20px; /* Espace entre les conteneurs */
-    margin-left: 60px;
-    margin-right: 60px;
-    border-radius: 8px; /* Coins arrondis */
+
+.input:focus, .textarea:focus {
+    border-color: #5117f8;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.submitButton {
+    padding: 12px 20px;
+    background-color: #5117f8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+.submitButton:hover {
+    background-color: #3a0fb5;
+}
+
+.contactInfo {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-size:26px; font-weight:700;  letter-spacing:1px; text-transform:uppercase; width:40%; white-space:nowrap; padding-bottom:13px;
-    color: #042b4c; /* Couleur du titre */
 }
-.contact h2 {border: 1px solid #333; /* Bordure solide */
-    padding: 10px 20px; /* Espacement intérieur */
-    display: inline-block; /* Pour que la bordure s'adapte au texte */
-    font-family: Arial, sans-serif;
-    font-size: 25px;
-    color: #333;
+
+.contactTitle {
     text-align: center;
-    background-color: #ccc8fd; /* Fond légèrement coloré */
-    border-radius: 8px; /* Coins arrondis */
-    margin-left: 40px;
-    margin-bottom: 18px;
-    margin-top: 5px;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contactDetails {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.contactItem {
+    margin: 10px 0;
+}
+
+.mapSection {
+    margin-bottom: 30px;
+}
+
+.mapTitle {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.mapContainer {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
