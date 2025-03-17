@@ -7,13 +7,15 @@ const errorHandler = require("./src/middlewares/errorMiddleware");
 const cors = require('cors');
 const PORT = require('./src/config/env').PORT || 3001;
 const path = require('path');
+const cookieParser = require('cookie-parser');
+
 
 connectToDB();
 consumeReservationEvents();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({credentials: true}));
 app.use(express.json());
 app.use("/carImage",express.static(path.join(__dirname, '/public/carsImages')));
 app.use('/api/reservation', reservationRoutes);
