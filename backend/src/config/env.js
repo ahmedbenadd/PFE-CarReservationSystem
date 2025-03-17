@@ -5,4 +5,6 @@ module.exports = {
     RESERVATION_TOPIC: 'reservation-topic',
     RESRVATION_CLIENT_ID: 'reservation-producer',
     RESERVATION_CONSUMER_GROUP: 'reservation-consumer-group',
+    JWT_SECRET: 'text_secret',
+    NODE_ENV: 'development',
 };
