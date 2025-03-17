@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../styles/Contact.module.css';
+import styles from '../styles/Contact.module.css';
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({
@@ -25,76 +25,55 @@ const ContactPage = () => {
     };
 
     return (
-        <div className="contact-container">
-            {/* Section Hero */}
-            <section className="hero-section">
-                <div className="hero-content">
-                    <h1>Contact Us</h1>
-                    <p className="hero-text">We're here to help! Reach out to us for any questions or inquiries.</p>
-                </div>
-            </section>
-
-            {/* Formulaire de Contact */}
-            <section className="contact-form-section">
-                <h2>Send Us a Message</h2>
-                <form onSubmit={handleSubmit} className="contact-form">
-                    <div className="form-group">
-                        <label htmlFor="name">Name</label>
-                        <input
+        <div >
+            <h1 className={styles.h1}>Contact Us</h1>
+            <div className={styles.form}>
+                <h2 className={styles.h2}>Send Us a Message</h2>
+                <form onSubmit={handleSubmit} >
+                    <div className={styles.txt1}>Name</div>
+                    <input
+                            className={styles.cadre}
+                            placeholder={"Enter your name"}
                             type="text"
                             id="name"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
                             required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input
+                    />
+                    <div className={styles.txt2}>Email</div>
+                    <input
+                            className={styles.cadre}
+                            placeholder={"Enter your email"}
                             type="email"
                             id="email"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
                             required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="message">Message</label>
-                        <textarea
+                    />
+                    <div className={styles.txt3}>Message</div>
+                    <textarea
+                            className={styles.cadre}
+                            placeholder={"Enter your message"}
                             id="message"
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
-                            rows="5"
+                            rows="7"
                             required
-                        ></textarea>
-                    </div>
-                    <button type="submit" className="submit-button">Send Message</button>
+                    ></textarea>
+                    <button type="submit" className={styles.btn}>Send Message</button>
                 </form>
-            </section>
+            </div>
 
 
-            <section className="contact-info-section">
-                <h2>Our Contact Information</h2>
-                <div className="contact-info-grid">
-                    <div className="contact-info-card">
-                        <span className="contact-icon">📞</span>
-                        <h3>Phone</h3>
-                        <p>+212 555 55 555</p>
-                    </div>
-                    <div className="contact-info-card">
-                        <span className="contact-icon">📧</span>
-                        <h3>Email</h3>
-                        <p>contact@autogo.com</p>
-                    </div>
-                    <div className="contact-info-card">
-                        <span className="contact-icon">📍</span>
-                        <h3>ADRESSS</h3>
-                        <p>l'internat dyl l'EST</p>
-                    </div>
-                </div>
+            <section className={styles.contact}>
+                <h2>Our Contact Information </h2>
+                <p >📞</p>
+                <p>+212 555 55 555</p>
+                <p>📧</p>
+                <p>contact@autogo.com</p>
             </section>
 
 
