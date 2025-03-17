@@ -1,0 +1,26 @@
+.login-container {
+    width: 400px;
+    margin: 10px;
+    padding: 20px;
+    background-color: #b6d3f9;
+    border-radius: 10px;
+}
+
+button {
+    width: 40%;
+    padding: 15px;
+    background-color: #3266de;
+    color: rgb(10, 10, 15);
+    border: none;
+    cursor: pointer;
+    margin-left: 400px;
+    margin-top: 200px;
+    margin-right: 100px;
+}
+h4 {
+    margin-left: 20px;
+
+}
+
+
+
