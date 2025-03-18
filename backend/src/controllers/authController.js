@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import userModel from '../models/user';
+import {stringifyTheme} from "@mui/material/styles/stringifyTheme";
 
 export const signup=async (req,res)=> {
     const {name, email, password} = req.body;
@@ -32,6 +33,7 @@ export const signup=async (req,res)=> {
         res.json({success:false , message:error.message});
     }
 }
+
 export const login=async (req,res)=> {
     const {email, password} = req.body;
     if (!email || !password) {
@@ -64,6 +66,8 @@ export const login=async (req,res)=> {
 
     }
 }
+
+
 export const logout=async (req,res)=> {
     try {
         res.clearCookie('token', {
@@ -77,3 +81,5 @@ export const logout=async (req,res)=> {
         return res.json({success:false , message:error.message});
     }
 }
+
+
