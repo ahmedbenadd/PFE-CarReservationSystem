@@ -20,7 +20,7 @@ app.use(cors({credentials: true}));
 app.use(express.json());
 app.use("/carImage",express.static(path.join(__dirname, '/public/carsImages')));
 app.use('/api/car',carRoutes);
-app.use('/api/auth', userRoutes)
+app.use('/api/auth', authRoutes)
 app.use('/api/reservation', reservationRoutes);
 app.use(errorHandler);
 
