@@ -2,7 +2,7 @@ const Kafka = require('kafkajs').Kafka;
 const env = require('./env');
 
 const kafka = new Kafka({
-    clientId: env.RESRVATION_CLIENT_ID,
+    clientId: env.RESERVATION_CLIENT_ID,
     brokers: [env.KAFKA_BROKER],
 });
 
