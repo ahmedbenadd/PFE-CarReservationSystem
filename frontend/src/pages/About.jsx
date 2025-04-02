@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import styles from "../styles/About.module.css";
+import {useNavigate} from "react-router-dom";
 
 const About = () => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        scrollToTop();
+    }, []);
+
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>About AutoGo</h1>
+
+            {/* Our Story Section */}
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>Our Story</h2>
                 <p className={styles.sectionText}>
@@ -12,6 +25,7 @@ const About = () => {
                 </p>
             </section>
 
+            {/* Our Mission Section */}
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>Our Mission</h2>
                 <p className={styles.sectionText}>
@@ -19,6 +33,7 @@ const About = () => {
                 </p>
             </section>
 
+            {/* Why Choose AutoGo Section */}
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>Why Choose AutoGo?</h2>
                 <ul className={styles.list}>
@@ -29,6 +44,7 @@ const About = () => {
                 </ul>
             </section>
 
+            {/* Our Team Section */}
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>Our Team</h2>
                 <p className={styles.sectionText}>
@@ -36,6 +52,7 @@ const About = () => {
                 </p>
             </section>
 
+            {/* Testimonials Section */}
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>What Our Customers Say</h2>
                 <blockquote className={styles.quote}>
@@ -63,7 +80,7 @@ const About = () => {
                 <p className={styles.sectionText}>
                     Explore our wide selection of vehicles and book today for your next adventure. At <strong>AutoGo</strong>, we make car rentals simple, fast, and enjoyable.
                 </p>
-                <button className={styles.button}>Book Now</button>
+                <button className={styles.button} onClick={() => navigate("/")}>Book Now</button>
             </section>
         </div>
     );

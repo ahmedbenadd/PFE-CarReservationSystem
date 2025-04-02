@@ -199,3 +199,8 @@
     color: red;
     margin-top: 20px;
 }
+
+.notfound {
+    margin: 12rem 0;
+    text-align: center;
+}

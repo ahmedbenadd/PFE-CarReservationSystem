@@ -1,0 +1,87 @@
+.verifyEmailContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 10rem auto 5rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #0065a1;
+}
+
+.description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.emailDisplay {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.codeInput {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.codeInput:focus {
+    border-color: #0065a1;
+    outline: none;
+}
+
+.verifyButton {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    width: 22rem;
+    background-color: #0065a1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.verifyButton:hover {
+    background-color: #004f7c;
+}
+
+.verifyButton:disabled {
+    background-color: #a9a9a9;
+    cursor: not-allowed;
+}
+
+.changeEmailPrompt {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.changeEmailLink {
+    color: #0065a1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.changeEmailLink:hover {
+    text-decoration: underline;
+}
+
+.loadingCircleContainer {
+    margin: 0 auto;
+    padding: 0;
+}

@@ -12,15 +12,10 @@ function Hero() {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    const bookBtn = () => {
-        document
-            .querySelector("#booking-section")
-            .scrollIntoView({ behavior: "smooth" });
-    };
-
     useEffect(() => {
+        scrollToTop();
         const onPageScroll = () => {
-            if (window.pageYOffset > 600) {
+            if (window.scrollY > 600) {
                 setGoUp(true);
             } else {
                 setGoUp(false);
@@ -51,21 +46,13 @@ function Hero() {
                             </p>
                             <div className={styles.heroContentTextBtns}>
                                 <Link
-                                    onClick={bookBtn}
                                     className={styles.heroContentTextBtnsBookRide}
-                                    to="/"
+                                    to="/cars"
                                 >
                                     Book Ride &nbsp;
                                 </Link>
-                                <Link
-                                    className={styles.heroContentTextBtnsLearnMore}
-                                    to="/"
-                                >
-                                    Learn More &nbsp;
-                                </Link>
                             </div>
                         </div>
-                        {/* img */}
                         <img
                             src={HeroCar}
                             alt="car-img"

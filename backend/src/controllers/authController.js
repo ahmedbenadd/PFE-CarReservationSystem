@@ -3,48 +3,64 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const env = require("../config/env");
 const transporter = require("../config/nodemailer");
-
+const path = require("path");
+const ejs = require("ejs");
 
 const signup = async (req, res, next) => {
-    const {name, email, password} = req.body;
+    const {name, email, tel, password} = req.body;
 
     try {
-        if (!name || !email || !password) {
-            res.status(400);
-            throw new Error("Missing details");
+        if (!name || !email || !password || !tel) {
+            return res.json({
+                success: false,
+                message: "Missing Data"
+            });
         }
 
         const existingUser = await User.findOne({email});
         if (existingUser) {
-            res.status(400);
-            throw new Error("User already exists");
+            return res.json({
+                success: false,
+                message: "User already exists"
+            })
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const user = new User({name, email, password: hashedPassword});
+        const user = new User({name, email, password: hashedPassword, tel});
         await user.save();
-
         const token = jwt.sign({id: user._id}, env.JWT_SECRET, {expiresIn: "7d"});
-
         res.cookie("token", token, {
             httpOnly: true,
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        });
+
+        // Render the HTML email template dynamically
+        const templatePath = path.join(__dirname, "../../public/templates/welcomeEmail.ejs");
+        const html = await ejs.renderFile(templatePath, {
+            name: user.name,
+            email: user.email,
+            primaryColor: "#0065a1", // Your primary color
+            websiteUrl: "http://localhost:3000/", // Replace with your website URL
         });
 
         const mailOptions = {
             from: env.SMTP_EMAIL,
             to: email,
             subject: "Welcome to AutoGO!",
-            text: `Welcome to AutoGO! your account has been created successfully with email address: ${email}`,
+            html: html,
         }
 
         await transporter.sendMail(mailOptions);
-
-        res.status(200).send();
+        return res.json({
+            success: true,
+        })
     } catch (error) {
-        console.error("Signup error:", error);
-        next(error);
+        console.log(error);
+        return res.json({
+            success: false,
+            message: error.message,
+        })
     }
 };
 
@@ -53,33 +69,44 @@ const login = async (req, res, next) => {
 
     try {
         if (!email || !password) {
-            res.status(400);
-            throw new Error("Email and password are required");
+            return res.json({
+                success: false,
+                message: "Email and password are required"
+            })
         }
 
         const user = await User.findOne({email});
         if (!user) {
-            res.status(400);
-            throw new Error("Invalid email");
+            return res.json({
+                success: false,
+                message: "Invalid Email or password"
+            })
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            res.status(400);
-            throw new Error("Invalid password");
+            return res.json({
+                success: false,
+                message: "Invalid Email or password"
+            })
         }
 
         const token = jwt.sign({id: user._id}, env.JWT_SECRET, {expiresIn: "7d"});
 
         res.cookie("token", token, {
             httpOnly: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+            maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
-        res.status(200).send();
+        return res.json({
+            success: true,
+        })
     } catch (error) {
-        console.error("Login error:", error);
-        next(error);
+        console.log(error);
+        return res.json({
+            success: false,
+            message: error.message,
+        })
     }
 };
 
@@ -88,11 +115,16 @@ const logout = async (req, res, next) => {
         res.clearCookie("token", {
             httpOnly: true,
         });
-
-        res.status(200).send();
+        return res.json({
+            success: true,
+            message: "Logout successfully",
+        })
     } catch (error) {
-        console.error("Logout error:", error);
-        next(error);
+        console.log(error);
+        return res.json({
+            success: false,
+            message: error.message,
+        })
     }
 };
 
@@ -102,33 +134,52 @@ const sendVerifyOtp = async (req, res, next) => {
 
         const user = await User.findById(userId);
         if (!user) {
-            res.status(404);
-            throw new Error("User not found.");
+            return res.json({
+                success: false,
+                message: "User not found"
+            })
         }
         if (user.isVerified) {
-            res.status(400);
-            throw new Error("User already verified.");
+            return res.json({
+                success: false,
+                message: "Account already verified"
+            })
         }
 
         const otp = String(Math.floor(100000 + Math.random() * 900000));
-
         user.verifyOtp = otp;
 
         // Expires after 1H
         user.verifyOtpExpireAt = Date.now() + 60 * 60 * 1000;
 
         await user.save();
+
+        // Render the HTML email template dynamically
+        const templatePath = path.join(__dirname, "../../public/templates/verifyEmail.ejs");
+        const html = await ejs.renderFile(templatePath, {
+            name: user.name,
+            otp: user.verifyOtp,
+            primaryColor: "#0065a1", // Your primary color
+            websiteUrl: "http://localhost:3000/", // Replace with your website URL
+        });
+
         const mailOptions = {
             from: env.SMTP_EMAIL,
             to: user.email,
             subject: "Account Verification Code",
-            text: `Hi ${user.name}, your account verification code is ${user.verifyOtp} .`,
-        }
+            html: html, // Use the rendered HTML template
+        };
         await transporter.sendMail(mailOptions);
-        res.status(200).send();
+        return res.json({
+            success: true,
+            message: "Verification Code Successfully Sent",
+        })
     } catch (error) {
-        console.error("sendVerifyOtp error: ", error);
-        next(error);
+        console.log(error);
+        return res.json({
+            success: false,
+            message: error.message,
+        })
     }
 };
 
@@ -136,44 +187,64 @@ const verifyEmail = async (req, res, next) => {
     try {
         const {userId, otp} = req.body;
         if (!userId || !otp) {
-            res.status(400);
-            throw new Error("Data is missing.");
+            return res.json({
+                success: false,
+                message: "Missing Data"
+            })
         }
 
         const user = await User.findById(userId);
         
         if (!user) {
-            res.status(404);
-            throw new Error("User not found.");
+            return res.json({
+                success: false,
+                message: "User not found"
+            })
         }
         
         if(user.verifyOtp === '' || user.verifyOtp !== otp) {
-            res.status(400);
-            throw new Error("Invalid verification code.");
+            return res.json({
+                success: false,
+                message: "Invalid verification code"
+            })
         }
 
         if (user.verifyOtpExpireAt < Date.now()) {
-            res.status(400);
-            throw new Error("Verification code is expired");
+            return res.json({
+                success: false,
+                message: "Verification code is expired"
+            })
         }
 
         user.isVerified = true;
         user.verifyOtpExpireAt = 0;
         user.verifyOtp = '';
         await user.save();
-        res.status(200).send();
+        return res.json({
+            success: true,
+            message: "Account Verified Successfully",
+        })
 
     } catch (error) {
-        console.error("VerifyOtp error:", error);
-        next(error);
+        console.log(error);
+        return res.json({
+            success: false,
+            message: error.message,
+        })
     }
 }
 
 const isAuthenticated = async (req, res, next) => {
     try {
-        res.status(200).send();
+        return res.json({
+            success: true
+        })
     } catch (error) {
-        next(error);
+        console.log(error);
+        return res.json({
+            success: false,
+            message: error.message,
+        })
     }
 }
 
@@ -181,78 +252,151 @@ const sendResetOtp = async (req, res, next) => {
     try {
         const {email} = req.body;
         if (!email) {
-            res.status(400);
-            throw new Error("Email is required");
+            return res.json({
+                success: false,
+                message: "Email is required"
+            })
         }
         const user = await User.findOne({email});
         if (!user) {
-            res.status(404);
-            throw new Error("Email not found.");
+            return res.json({
+                success: false,
+                message: "User not found"
+            })
         }
 
         user.resetOtp = String(Math.floor(100000 + Math.random() * 900000));
 
-        // Expires after 1H
+        // Expires after 15min
         user.resetOtpExpireAt = Date.now() + 15 * 60 * 1000;
 
         await user.save();
+
+        // Render the HTML email template dynamically
+        const templatePath = path.join(__dirname, "../../public/templates/resetPasswordEmail.ejs");
+        const html = await ejs.renderFile(templatePath, {
+            name: user.name,
+            otp: user.resetOtp,
+            primaryColor: "#0065a1", // Your primary color
+            websiteUrl: "http://localhost:3000/", // Replace with your website URL
+        });
+
         const mailOptions = {
             from: env.SMTP_EMAIL,
             to: user.email,
             subject: "Password Reset Code",
-            text: `Hi ${user.name}, your password reset code is ${user.resetOtp} .`,
-        }
+            html: html, // Use the rendered HTML template
+        };
+
         await transporter.sendMail(mailOptions);
-        res.status(200).send();
+        return res.json({
+            success: true,
+            message: "Reset code sent to your email",
+        })
 
     } catch (error) {
-        next(error);
+        console.log(error);
+        return res.json({
+            success: false,
+            message: error.message,
+        })
     }
 }
+
+const verifyResetOtp = async (req, res, next) => {
+    try {
+        const { email, otp } = req.body;
+
+        if (!email || !otp) {
+            return res.json({
+                success: false,
+                message: "Missing Data",
+            });
+        }
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.json({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        if (user.resetOtp === "") {
+            return res.json({
+                success: false,
+                message: "Invalid verification code",
+            });
+        }
+
+        if (user.resetOtp !== otp) {
+            return res.json({
+                success: false,
+                message: "Incorrect verification code",
+            });
+        }
+
+        return res.json({
+            success: true,
+            message: "Code verified successfully!",
+        });
+    } catch (error) {
+        console.log(error);
+        return res.json({
+            success: false,
+            message: error.message,
+        });
+    }
+};
 
 const resetPassword = async (req, res, next) => {
     try {
         const {email, otp, newPassword} = req.body;
         if (!email || !otp || !newPassword) {
-            res.status(400);
-            throw new Error("Data is missing.");
+            return res.json({
+                success: false,
+                message: "Data is missing"
+            });
         }
 
         const user = await User.findOne({email});
 
         if (!user) {
-            res.status(404);
-            throw new Error("User not found.");
+            return res.json({
+                success: false,
+                message: "User not found"
+            })
         }
 
         if(user.resetOtp === '' || user.resetOtp !== otp) {
-            res.status(400);
-            throw new Error("Invalid verification code.");
+            return res.json({
+                success: false,
+                message: "Reset code is invalid",
+            })
         }
 
         if (user.resetOtpExpireAt < Date.now()) {
-            res.status(400);
-            throw new Error("Verification code is expired");
+            return res.json({
+                success: false,
+                message: "Reset code is already expired",
+            })
         }
 
         user.password = await bcrypt.hash(newPassword, 10);
         user.resetOtpExpireAt = 0;
         user.resetOtp = '';
         await user.save();
-
-
-        user.isVerified = true;
-        user.verifyOtpExpireAt = 0;
-        user.verifyOtp = '';
-        await user.save();
-        res.clearCookie("token", {
-            httpOnly: true,
-        });
-        res.status(200).send();
+        return res.json({
+            success: true,
+            message: "Password reset successfully",
+        })
 
     } catch (error) {
-        next(error);
-    }
+        console.log(error);
+        return res.json({
+            success: false,
+            message: error.message,
+        })    }
 }
 
 module.exports = {
@@ -263,5 +407,6 @@ module.exports = {
     verifyEmail,
     isAuthenticated,
     sendResetOtp,
+    verifyResetOtp,
     resetPassword,
 };

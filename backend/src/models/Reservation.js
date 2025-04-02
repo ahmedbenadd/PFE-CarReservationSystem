@@ -1,22 +1,15 @@
 const mongoose = require('mongoose');
 
 const reservationSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, 'Name is required'],
-    },
-    email: {
-        type: String,
-        required: [true, 'Email is required'],
-    },
-    phone: {
-        type: String,
-        required: [true, 'Phone number is required'],
-    },
-    car: {
+    carId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Car',
-        required: [true, 'CarPage reference is required'],
+        required: [true, 'Car reference is required'],
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'User reference is required'],
     },
     pickupDate: {
         type: Date,
@@ -26,10 +19,18 @@ const reservationSchema = new mongoose.Schema({
         type: Date,
         required: [true, 'Dropoff date is required'],
     },
-    message: {
-        type: String,
-        required: [true, 'Message is required'],
+    totalDays: {
+        type: Number,
+        required: [true, 'Total days is required'],
     },
+    totalPrice: {
+        type: Number,
+        required: [true, 'Total price is required'],
+    },
+    status: {
+        type: String,
+        default: 'waiting',
+    }
 }, {
     timestamps: true
 });

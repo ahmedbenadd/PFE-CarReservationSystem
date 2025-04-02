@@ -14,8 +14,12 @@ function CarSearch() {
     useEffect(() => {
         const fetchBrandsAndModels = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/car/brands');
-                setBrandsData(response.data);
+                const {data} = await axios.get('http://localhost:5000/api/car/brands');
+                if(data.success) {
+                    setBrandsData(data.brandsWithModels);
+                } else {
+                    setSelectError('Failed to fetch car data. Please try again later.');
+                }
             } catch (err) {
                 console.error('Failed to fetch brands and models:', err);
                 setSelectError('Failed to fetch car data. Please try again later.');

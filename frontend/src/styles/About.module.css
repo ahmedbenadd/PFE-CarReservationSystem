@@ -1,73 +1,101 @@
+/* General Container */
 .container {
-    max-width: 1200px;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: white;
     font-family: Arial, sans-serif;
-    margin: 10rem auto 6rem auto;
+    margin: 10rem auto 4rem auto;
 }
 
 .title {
-    text-align: center;
     font-size: 2.5rem;
+    margin-bottom: 40px;
     color: #333;
-    margin-bottom: 30px;
 }
 
+/* Section Styling */
 .section {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .sectionTitle {
     font-size: 1.8rem;
-    color: #5117f8;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: #555;
 }
 
 .sectionText {
-    font-size: 1.1rem;
-    color: #555;
+    font-size: 1rem;
     line-height: 1.6;
+    color: #666;
 }
 
+/* List Styling */
 .list {
     list-style-type: none;
     padding: 0;
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
 }
 
 .list li {
     margin-bottom: 10px;
+    font-size: 1rem;
+    color: #666;
 }
 
+/* Blockquote Styling */
 .quote {
-    font-size: 1.1rem;
-    color: #555;
     font-style: italic;
-    border-left: 4px solid #5117f8;
-    padding-left: 15px;
-    margin: 15px 0;
+    font-size: 1.1rem;
+    color: #777;
+    margin: 20px 0;
+    padding-left: 20px;
+    border-left: 4px solid #ddd;
 }
 
+/* Button Styling */
 .button {
-    display: block;
-    margin: 20px auto 0;
-    padding: 12px 24px;
-    background-color: #5117f8;
-    color: white;
+    padding: 10px 20px;
+    background-color: #0065a1;
+    color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
 }
 
 .button:hover {
-    background-color: #3a0fb5;
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.5rem;
+    }
+
+    .sectionText {
+        font-size: 0.9rem;
+    }
+
+    .list li {
+        font-size: 0.9rem;
+    }
+
+    .quote {
+        font-size: 1rem;
+    }
+
+    .button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
 }

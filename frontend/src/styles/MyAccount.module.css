@@ -1,0 +1,132 @@
+/* Container */
+.myAccountContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 10rem auto 5rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Title */
+.title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #0065a1;
+}
+
+/* Subtitle */
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: left;
+    width: 100%;
+}
+
+/* Input Group */
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+/* Label */
+.label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Input Fields */
+.input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus {
+    border-color: #0065a1;
+    outline: none;
+}
+
+/* Error Messages */
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Save Button */
+.saveButton {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    margin-bottom: 1.2rem;
+    background-color: #0065a1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.saveButton:hover {
+    background-color: #004f7c;
+}
+
+/* Actions Section */
+.actionsSection {
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.actionsButtons {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Buttons */
+.resetPasswordButton, .logoutButton, .verifyEmailButton {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resetPasswordButton, .verifyEmailButton {
+    background-color: #c69401; /* Yellow for reset password */
+    color: white;
+}
+
+.resetPasswordButton:hover, .verifyEmailButton:hover {
+    background-color: #e09700;
+}
+
+.logoutButton {
+    background-color: #ff4d4d; /* Red for logout */
+    color: white;
+}
+
+.logoutButton:hover {
+    background-color: #e63939;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}

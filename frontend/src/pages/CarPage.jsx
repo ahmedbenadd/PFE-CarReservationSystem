@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {useContext, useEffect, useState} from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import axios from "axios";
 import styles from "../styles/CarPage.module.css";
@@ -12,41 +12,57 @@ import engineSizeImg from "../images/carPage/engineSize.png";
 import gearImg from "../images/carPage/gears.png";
 import bodyImg from "../images/carPage/carBody.png";
 import fuelImg from "../images/carPage/fuel.png";
+import LoginPrompt from "../components/LoginPrompt.jsx";
+import { AppContext } from "../context/AppContext.jsx";
+import {toast} from "react-toastify";
+import reactRefresh from "eslint-plugin-react-refresh";
 
 function CarPage() {
+    const {isLoggedIn, userData, backendUrl} = useContext(AppContext);
+    const [showPrompt, setShowPrompt] = useState(false);
+    const [type, setType] = useState("");
+    const [message, setMessage] = useState("");
     const { id } = useParams();
     const [car, setCar] = useState(null);
     const [loading, setLoading] = useState(true);
     const [alert, setAlert] = useState(null);
-    const [pickupDate, setStartDate] = useState("");
-    const [dropoffDate, setEndDate] = useState("");
+    const [pickupDate, setPickupDate] = useState("");
+    const [dropoffDate, setDropoffDate] = useState("");
+    const navigate = useNavigate();
 
     const today = new Date().toISOString().split("T")[0];
     const minDropoffDate = pickupDate
         ? new Date(new Date(pickupDate).getTime() + 86400000).toISOString().split("T")[0]
         : today;
 
-    useEffect(() => {
-        const fetchCar = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/api/car/${id}`);
-                console.log(response);
-                setCar(response.data);
+    const fetchCar = async () => {
+        try {
+            setLoading(true);
+            const {data} = await axios.get(`http://localhost:5000/api/car/${id}`);
+            if(data.success){
+                setCar(data.car);
                 setLoading(false);
-            } catch (err) {
-                console.error('Failed to fetch car:', err);
+            } else {
                 setLoading(false);
+                toast.error(data.message);
+                navigate("/");
             }
-        };
+        } catch (err) {
+            console.error('Failed to fetch car:', err);
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
         fetchCar();
     }, [id]);
 
     const handleStartDateChange = (e) => {
         const selectedStartDate = e.target.value;
-        setStartDate(selectedStartDate);
+        setPickupDate(selectedStartDate);
 
         if (dropoffDate && selectedStartDate >= dropoffDate) {
-            setEndDate("");
+            setDropoffDate("");
             showAlert("End date should be after the start date!");
         } else {
             setAlert(null);
@@ -55,7 +71,7 @@ function CarPage() {
 
     const handleEndDateChange = (e) => {
         const selectedEndDate = e.target.value;
-        setEndDate(selectedEndDate);
+        setDropoffDate(selectedEndDate);
 
         if (selectedEndDate <= pickupDate) {
             showAlert("End date should be after the start date!");
@@ -64,7 +80,17 @@ function CarPage() {
         }
     };
 
-    const handleReserve = () => {
+    const handleReserve = async () => {
+        if (!isLoggedIn) {
+            setMessage("You need to log in to perform this action.");
+            setType("login");
+            return setShowPrompt(true);
+        }
+        if (!userData.isVerified) {
+            setMessage("You need to verify your email address to perform this action.");
+            setType("verify");
+            return setShowPrompt(true);
+        }
         if (!pickupDate || !dropoffDate) {
             showAlert("Please select both start and end dates.");
             return;
@@ -89,11 +115,27 @@ function CarPage() {
             totalDays,
             totalPrice,
         };
-        console.log(reservation);
+
+        try {
+            setLoading(true);
+            axios.defaults.withCredentials = true;
+            const {data} = await axios.post(`${backendUrl}/api/reservation`, reservation);
+            if(data.success){
+                toast.success(data.message);
+                setDropoffDate("");
+                setPickupDate("");
+                await setCar(null);
+                await fetchCar();
+            } else {
+                toast.error(data.message);
+            }
+        } catch (error) {
+            toast.error(error.message || "Failed to reserve.");
+        } finally {
+            setLoading(false);
+        }
+
     };
-
-
-
 
     const showAlert = (message) => {
         setAlert(message);
@@ -110,12 +152,9 @@ function CarPage() {
         );
     }
 
-    if (!car) {
-        return <div className={styles.error}>Car not found.</div>;
-    }
-
     return (
         <section id="car-page" className={styles.section}>
+            <LoginPrompt showPrompt={showPrompt} setShowPrompt={setShowPrompt} message={message} type={type} />
             <div className={styles.container}>
                 <div className={`${styles.row} ${styles.carName}`}>
                     <h2>{`${car.brand} ${car.model}`}</h2>
@@ -174,8 +213,8 @@ function CarPage() {
                             <input
                                 type="date"
                                 value={dropoffDate}
-                                min={minDropoffDate} // Set min to Start Date + 1 day
-                                disabled={!pickupDate} // Disable until Start Date is selected
+                                min={minDropoffDate}
+                                disabled={!pickupDate}
                                 onChange={handleEndDateChange}
                             />
                         </div>

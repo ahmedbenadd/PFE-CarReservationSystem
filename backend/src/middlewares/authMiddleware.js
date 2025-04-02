@@ -5,18 +5,25 @@ const userAuth = async (req, res, next) => {
     try {
         const {token} = req.cookies;
         if(!token) {
-            res.status(401);
-            throw new Error("Token is missing.");
+            return res.json({
+                success: false,
+                message: "Not Authorized. Login First",
+            })
         }
         const tokenDecode = jwt.verify(req.cookies.token, env.JWT_SECRET);
         if(!tokenDecode.id) {
-            res.status(401);
-            throw new Error("Token is missing.");
+            return res.json({
+                success: false,
+                message: "Not Authorized. Login Again",
+            })
         }
         req.body.userId = tokenDecode.id;
         next();
     } catch (error) {
-        next(error);
+        return res.json({
+            success: false,
+            message: error.message,
+        })
     }
 }
 

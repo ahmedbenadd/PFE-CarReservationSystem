@@ -4,15 +4,11 @@ const idValidator = require("../middlewares/idValidationMiddleware");
 const {
     getCars,
     getCarById,
-    createCar,
-    updateCar,
-    deleteCar,
     getBrandsWithModels,
 } = require("../controllers/carController");
 
 router.route("/brands").get(getBrandsWithModels);
-router.route("/").get(getCars).post(createCar);
-router.route("/:id").get(idValidator, getCarById).put(idValidator, updateCar).delete(idValidator, deleteCar);
+router.route("/").get(getCars);
+router.route("/:id").get(idValidator, getCarById);
 
 module.exports = router;
-

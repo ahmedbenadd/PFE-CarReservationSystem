@@ -8,14 +8,22 @@ function Cars() {
     const [loading, setLoading] = useState(true);
     const [cars, setCars] = useState([]);
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     useEffect(() => {
+        scrollToTop();
         const fetchCars = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/car/");
-                setCars(response.data);
-                setLoading(false)
+                const {data} = await axios.get("http://localhost:5000/api/car/");
+                if(data.success) {
+                    setCars(data.cars);
+                    setLoading(false)
+                } else {
+                    setLoading(false);
+                }
             } catch (err) {
-                console.log(err);
                 setLoading(false);
             }
         };

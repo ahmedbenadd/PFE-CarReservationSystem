@@ -1,26 +1,48 @@
+/* Container for the entire signup page */
 .signupContainer {
     width: 100%;
-    max-width: 500px;
-    margin: 9rem auto 4rem auto;
+    max-width: 600px;
+    margin: 11rem auto 4rem auto;
     padding: 1.4rem 1.7rem;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    position: relative;
+    height: 100vh;
+    bottom: 100%;
 }
 
+/* Title */
 .title {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #3266de;
+    margin-bottom: 2.2rem;
+    color: #0065a1;
 }
 
+/* Form */
 .form {
     display: flex;
     flex-direction: column;
-    gap: .8rem;
+    gap: 1.2rem; /* Adjusted gap for better spacing */
 }
 
+/* Input Group (Wrapper for input and error) */
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    width: 100%;
+}
+
+/* Policy Group (Wrapper for checkbox and error) */
+.policyGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+/* Input fields */
 .input {
     width: 100%;
     padding: 12px;
@@ -32,14 +54,18 @@
 }
 
 .input:focus {
-    border-color: #3266de;
+    border-color: #0065a1;
 }
 
+
+
+/* Checkbox and terms policy */
 .policy {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .checkbox {
@@ -54,10 +80,22 @@
     margin: 0;
 }
 
+/* Error messages */
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin: 0 auto 0 1rem;
+}
+
+.policyErrorText {
+    color: red;
+}
+
+/* Button */
 .button {
     width: 100%;
     padding: 12px;
-    background-color: #3266de;
+    background-color: #0065a1;
     color: white;
     border: none;
     border-radius: 5px;
@@ -70,6 +108,7 @@
     background-color: #1a4fad;
 }
 
+/* Login prompt */
 .loginPrompt {
     margin-top: 15px;
 }
@@ -80,7 +119,7 @@
 }
 
 .link {
-    color: #3266de;
+    color: #0065a1;
     text-decoration: none;
     font-weight: bold;
 }
@@ -89,9 +128,42 @@
     text-decoration: underline;
 }
 
-.error {
-    color: #ff0000;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    text-align: center;
+/* Loading Overlay */
+.loadingOverlay {
+    position: fixed; /* Cover the entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensure it's on top of everything */
+    animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in effect */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Loading Spinner */
+.loadingCircle {
+    animation: popIn 0.3s ease-in-out; /* Smooth pop-in effect for the spinner */
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }

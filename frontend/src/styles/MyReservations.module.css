@@ -1,0 +1,103 @@
+/* General Page Styling */
+.reservationsPage {
+    max-width: 1200px;
+    margin: 10rem auto 4rem auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+.noReservations {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+}
+
+/* Reservation List */
+.reservationList {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reservationRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* Adjust column widths as needed */
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #fff;
+}
+
+.reservationRow:nth-child(even) {
+    background-color: #fafafa; /* Alternate row background for better readability */
+}
+
+.reservationRow:last-child {
+    border-bottom: none; /* Remove border for the last row */
+}
+
+
+
+.carImage {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.detail {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+.status {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 16px; /* Rounded pill shape */
+    color: #fff;
+}
+
+/* Specific Status Colors */
+.status.waiting {
+    background-color: #007bff; /* Blue for "Awaiting Confirmation" */
+}
+
+.status.cancelled {
+    background-color: #dc3545; /* Red for "Cancelled by User" */
+}
+
+.status.denied {
+    background-color: #ffc107; /* Yellow for "Approval Denied" */
+    color: #000; /* Black text for better visibility */
+}
+
+.status.finished {
+    background-color: #28a745; /* Green for "Completed" */
+}
+
+/* Loading and Error States */
+.loading,
+.error {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+}
+
+.error {
+    color: #ff4d4d;
+}
