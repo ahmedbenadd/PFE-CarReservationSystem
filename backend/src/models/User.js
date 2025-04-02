@@ -10,7 +10,10 @@ const userSchema = new mongoose.Schema({
     isVerified: {type: Boolean, default: false},
     resetOtp: {type: String, default: ''},
     resetOtpExpireAt: {type: Number, default: 0},
-})
+}
+, {
+    timestamps: true
+    });
 
 const User = mongoose.model('User', userSchema);
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Contact.module.css";
 import axios from "axios";
+import {toast} from "react-toastify";
 
 function ContactPage() {
     const [formData, setFormData] = useState({
@@ -9,7 +10,6 @@ function ContactPage() {
         message: "",
     });
     const [isLoading, setIsLoading] = useState(false);
-    const [submitMessage, setSubmitMessage] = useState("");
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -30,20 +30,19 @@ function ContactPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        setSubmitMessage("");
 
         try {
-            const { data } = await axios.post("http://localhost:5000/contacts", formData);
+            const { data } = await axios.post("http://localhost:5000/api/contact", formData);
 
             if (data.success) {
-                setSubmitMessage("Thank you for contacting us! We will get back to you soon.");
-                setFormData({ name: "", email: "", message: "" }); // Reset the form
+                toast.success(data.message);
+                setFormData({ name: "", email: "", message: "" });
             } else {
-                setSubmitMessage("An error occurred. Please try again later.");
+                toast.error(data.message);
             }
         } catch (error) {
+            toast.error(error.message);
             console.error(error);
-            setSubmitMessage("Something went wrong. Please try again later.");
         } finally {
             setIsLoading(false);
         }
@@ -52,9 +51,6 @@ function ContactPage() {
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Contact Us</h1>
-
-            {submitMessage && <p className={styles.submitMessage}>{submitMessage}</p>}
-
             <div className={styles.contentWrapper}>
                 <div className={styles.formSection}>
                     <h2 className={styles.formTitle}>Send Us a Message</h2>

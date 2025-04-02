@@ -5,6 +5,7 @@ const reservationRoutes = require('./src/routes/reservationRoutes');
 const carRoutes = require('./src/routes/carRoutes');
 const authRoutes = require('./src/routes/authRoutes');
 const userRoutes = require('./src/routes/userRoutes');
+const contactRoutes = require('./src/routes/contactRoutes');
 const errorHandler = require("./src/middlewares/errorMiddleware");
 const cors = require('cors');
 const PORT = require('./src/config/env').PORT || 3001;
@@ -26,6 +27,7 @@ app.use('/api/car',carRoutes);
 app.use('/api/auth', authRoutes)
 app.use('/api/user',userRoutes)
 app.use('/api/reservation', reservationRoutes);
+app.use('/api/contact', contactRoutes)
 app.use(errorHandler);
 
 app.listen(PORT, () => {
