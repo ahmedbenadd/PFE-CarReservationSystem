@@ -7,7 +7,8 @@ export default defineConfig({
         port: 3000,
         host: true, // Allow connections from all hosts
         allowedHosts: [
-            '5ce3-196-118-75-53.ngrok-free.app', // Add your ngrok host here
+            '008a-196-115-212-76.ngrok-free.app',
+            'grumpy-swans-brake.loca.lt'// Wildcard for all ngrok subdomains
         ],
         watch: {
             usePolling: true,

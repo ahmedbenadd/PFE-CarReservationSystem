@@ -37,8 +37,8 @@ const AppContextProvider = (props) => {
                 setIsLoggedIn(true);
                 await getUserData();
             } else {
-                setIsLoggedIn(false);
-                toast.error(data.message);
+                // setIsLoggedIn(false);
+                // toast.error(data.message);
             }
         } catch (error) {
             setIsLoggedIn(false);

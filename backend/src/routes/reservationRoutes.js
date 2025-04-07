@@ -9,6 +9,6 @@ const userAuth = require("../middlewares/authMiddleware");
 
 router.get('/', userAuth, getReservationsByUser);
 router.post('/',userAuth, createReservation);
-router.delete('/:id',userAuth, cancelReservation);
+// router.delete('/:id',userAuth, cancelReservation);
 
 module.exports = router;

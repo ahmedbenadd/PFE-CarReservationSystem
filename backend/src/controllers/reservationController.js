@@ -70,48 +70,48 @@ const getReservationsByUser = async (req, res, next) => {
     }
 };
 
-const cancelReservation = async (req, res, next) => {
-    const {reservationId, userId} = req.body;
-    try {
-        const reservation = await Reservation.findById(reservationId);
-        if (!reservation) {
-            return res.json({
-                success: false,
-                message: "Reservation not found",
-            })
-        }
-
-        if(reservation.userId !== userId) {
-            return res.json({
-                success: false,
-                message: "Unauthorized action",
-            })
-        }
-
-        if (reservation.status.toLowerCase() !== "waiting") {
-            return res.json({
-                success: false,
-                message: "Cannot cancel a waiting reservation",
-            })
-        }
-
-        reservation.status = "canceled";
-        reservation.save();
-        return res.json({
-            success: true,
-            message: "Reservation cancelled",
-        })
-    } catch (error) {
-        console.error(error);
-        return res.json({
-            success: false,
-            message: error.message,
-        })
-    }
-}
+// const cancelReservation = async (req, res, next) => {
+//     const {reservationId, userId} = req.body;
+//     try {
+//         const reservation = await Reservation.findById(reservationId);
+//         if (!reservation) {
+//             return res.json({
+//                 success: false,
+//                 message: "Reservation not found",
+//             })
+//         }
+//
+//         if(reservation.userId !== userId) {
+//             return res.json({
+//                 success: false,
+//                 message: "Unauthorized action",
+//             })
+//         }
+//
+//         if (reservation.status.toLowerCase() !== "waiting") {
+//             return res.json({
+//                 success: false,
+//                 message: "Cannot cancel a waiting reservation",
+//             })
+//         }
+//
+//         reservation.status = "canceled";
+//         reservation.save();
+//         return res.json({
+//             success: true,
+//             message: "Reservation cancelled",
+//         })
+//     } catch (error) {
+//         console.error(error);
+//         return res.json({
+//             success: false,
+//             message: error.message,
+//         })
+//     }
+// }
 
 module.exports = {
     createReservation,
     getReservationsByUser,
-    cancelReservation,
+    // cancelReservation,
 };

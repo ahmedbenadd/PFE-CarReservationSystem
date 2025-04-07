@@ -1,12 +1,14 @@
 import axios from "axios";
 import CarCard from "../components/CarCard";
 import styles from "../styles/Cars.module.css";
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import {AppContext} from "../context/AppContext.jsx";
 
 function Cars() {
     const [loading, setLoading] = useState(true);
     const [cars, setCars] = useState([]);
+    const {backendUrl} = useContext(AppContext);
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -16,7 +18,7 @@ function Cars() {
         scrollToTop();
         const fetchCars = async () => {
             try {
-                const {data} = await axios.get("http://localhost:5000/api/car/");
+                const {data} = await axios.get(backendUrl + "/api/car/");
                 if(data.success) {
                     setCars(data.cars);
                     setLoading(false)

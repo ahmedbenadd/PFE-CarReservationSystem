@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import styles from "../styles/CarSearch.module.css";
+import {AppContext} from "../context/AppContext.jsx";
 
 function CarSearch() {
     const [brandsData, setBrandsData] = useState([]);
@@ -10,11 +11,12 @@ function CarSearch() {
     const [selectedCarId, setSelectedCarId] = useState('');
     const [selectError, setSelectError] = useState('');
     const navigate = useNavigate();
+    const {backendUrl} = useContext(AppContext);
 
     useEffect(() => {
         const fetchBrandsAndModels = async () => {
             try {
-                const {data} = await axios.get('http://localhost:5000/api/car/brands');
+                const {data} = await axios.get(backendUrl + '/api/car/brands');
                 if(data.success) {
                     setBrandsData(data.brandsWithModels);
                 } else {

@@ -66,7 +66,6 @@ const signup = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     const {email, password} = req.body;
-
     try {
         if (!email || !password) {
             return res.json({
@@ -74,7 +73,6 @@ const login = async (req, res, next) => {
                 message: "Email and password are required"
             })
         }
-
         const user = await User.findOne({email});
         if (!user) {
             return res.json({
@@ -82,7 +80,6 @@ const login = async (req, res, next) => {
                 message: "Invalid Email or password"
             })
         }
-
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.json({
@@ -90,14 +87,11 @@ const login = async (req, res, next) => {
                 message: "Invalid Email or password"
             })
         }
-
         const token = jwt.sign({id: user._id}, env.JWT_SECRET, {expiresIn: "7d"});
-
         res.cookie("token", token, {
             httpOnly: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
-
         return res.json({
             success: true,
         })
@@ -110,7 +104,7 @@ const login = async (req, res, next) => {
     }
 };
 
-const logout = async (req, res, next) => {
+const logout = async (req, res) => {
     try {
         res.clearCookie("token", {
             httpOnly: true,

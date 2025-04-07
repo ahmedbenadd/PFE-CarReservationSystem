@@ -15,7 +15,6 @@ import fuelImg from "../images/carPage/fuel.png";
 import LoginPrompt from "../components/LoginPrompt.jsx";
 import { AppContext } from "../context/AppContext.jsx";
 import {toast} from "react-toastify";
-import reactRefresh from "eslint-plugin-react-refresh";
 
 function CarPage() {
     const {isLoggedIn, userData, backendUrl} = useContext(AppContext);
@@ -38,7 +37,7 @@ function CarPage() {
     const fetchCar = async () => {
         try {
             setLoading(true);
-            const {data} = await axios.get(`http://localhost:5000/api/car/${id}`);
+            const {data} = await axios.get(`${backendUrl}/api/car/${id}`);
             if(data.success){
                 setCar(data.car);
                 setLoading(false);
